@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import classes from "./picker.module.css";
+import classes from "./styles.module.css";
 import Land from "./Land";
 const Picker = () => {
   const [category, setCategory] = useState("industrial");
@@ -14,8 +14,8 @@ const Picker = () => {
   };
 
   return (
-    <div style={{ marginTop: 50 }}>
-      <div>
+    <div className={classes.cont}>
+      <div className={classes.cat}>
         <Form style={{ width: "40%" }}>
           <Form.Group controlId="exampleForm.ControlSelect1">
             <Form.Label style={{ fontSize: 20 }}>
@@ -33,6 +33,7 @@ const Picker = () => {
         style={
           category === "mining" ? { display: "flex" } : { display: "none" }
         }
+        className={classes.mine}
       >
         <Form style={{ width: "40%" }}>
           <Form.Group controlId="exampleForm.ControlSelect1">

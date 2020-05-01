@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import classes from "./styles.module.css";
+import { Form, Button } from "react-bootstrap";
 
 const Land = (props) => {
   const minecat = props.minecat;
@@ -55,20 +57,39 @@ const Land = (props) => {
     event.preventDefault();
   };
 
-  const clearHandler = () => {
+  const clearHandler = (event) => {
     setTaxable(0);
     setPay(0);
     setArea("");
+    event.preventDefault();
   };
   return (
     <div>
-      <form onSubmit={CalculateHandler}>
-        <label>
-          Area of land:
-          <input type="number" value={area} onChange={inputHandler} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className={classes.cat}>
+        <Form style={{ width: "40%" }}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Area of your Land</Form.Label>
+            <Form.Control
+              type="number"
+              placeholder="Area"
+              value={area}
+              onChange={inputHandler}
+            />
+            <Form.Text className="text-muted">
+              Value entered is in square feet
+            </Form.Text>
+          </Form.Group>
+          <div className={classes.buttonContainer}>
+            <Button variant="success" type="submit" onClick={CalculateHandler}>
+              Calculate
+            </Button>
+
+            <Button variant="primary" type="submit" onClick={clearHandler}>
+              Clear
+            </Button>
+          </div>
+        </Form>
+      </div>
       <h1>tax</h1>
       <h1>{taxable}</h1>
       <h1>pay</h1>

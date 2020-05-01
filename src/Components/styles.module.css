@@ -1,0 +1,15 @@
+.cont {
+  margin-top: 40px;
+}
+.cat {
+  display: flex;
+  justify-content: center;
+}
+.mine {
+  display: flex;
+  justify-content: center;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
