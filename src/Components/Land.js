@@ -97,7 +97,7 @@ const Land = (props) => {
       </div>
       <div className={classes.Tax}>
         <h3>Taxable Land:</h3>
-        <h3 style={{ marginLeft: 5 }}>{taxable}</h3>
+        <h3 style={{ marginLeft: 5 }}>{taxable} sq.ft</h3>
       </div>
       <div className={classes.Tax}>
         <h3>Payable Tax:</h3>
