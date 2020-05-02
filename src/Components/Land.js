@@ -75,7 +75,7 @@ const Land = (props) => {
               value={area}
               onChange={inputHandler}
             />
-            <Form.Text className="text-muted">
+            <Form.Text className=" font-italic ">
               Value entered is in square feet
             </Form.Text>
           </Form.Group>
@@ -101,10 +101,18 @@ const Land = (props) => {
       </div>
       <div className={classes.Tax}>
         <h3>Payable Tax:</h3>
-        <h3 style={{ marginLeft: 5 }}>{Pay}</h3>
+        <h3 style={{ marginLeft: 5 }}>{Pay} ₹</h3>
       </div>
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
-        Note :
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: 20,
+          fontSize: 25,
+        }}
+      >
+        Note : Intrest and Penalty on Payable Tax may be applicable as per land
+        tax rules
       </div>
     </div>
   );
