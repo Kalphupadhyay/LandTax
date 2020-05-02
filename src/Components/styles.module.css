@@ -11,5 +11,19 @@
 }
 .buttonContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+}
+.Tax {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 490px) {
+  .buttonContainer {
+    display: grid;
+  }
+  .btn {
+    margin-bottom: 10px;
+  }
 }

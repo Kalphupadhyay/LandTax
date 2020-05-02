@@ -80,7 +80,12 @@ const Land = (props) => {
             </Form.Text>
           </Form.Group>
           <div className={classes.buttonContainer}>
-            <Button variant="success" type="submit" onClick={CalculateHandler}>
+            <Button
+              variant="success"
+              className={classes.btn}
+              type="submit"
+              onClick={CalculateHandler}
+            >
               Calculate
             </Button>
 
@@ -90,10 +95,17 @@ const Land = (props) => {
           </div>
         </Form>
       </div>
-      <h1>tax</h1>
-      <h1>{taxable}</h1>
-      <h1>pay</h1>
-      <h1>{Pay}</h1>
+      <div className={classes.Tax}>
+        <h3>Taxable Land:</h3>
+        <h3 style={{ marginLeft: 5 }}>{taxable}</h3>
+      </div>
+      <div className={classes.Tax}>
+        <h3>Payable Tax:</h3>
+        <h3 style={{ marginLeft: 5 }}>{Pay}</h3>
+      </div>
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
+        Note :
+      </div>
     </div>
   );
 };
