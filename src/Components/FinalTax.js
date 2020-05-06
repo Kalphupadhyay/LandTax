@@ -5,21 +5,25 @@ import { Button } from "react-bootstrap";
 const FinalTax = (props) => {
   const [yeartax, setYeartax] = useState(0);
   const [monthTax, setMonthTax] = useState(0);
+  const [totalTax, setTotalTax] = useState(0);
   const { payableTax } = useContext(LandContext);
-
   const Numberofdays = props.days;
+
   const YearTaxCalc = (PayableTax, Numberofdays) => {
     const dayIntrest = PayableTax * (12 / 100) * 1;
-    const Final = dayIntrest * (Numberofdays / 365);
+    const Final = (Numberofdays / 365) * dayIntrest;
+
     return Final;
   };
   const MonthTaxCalc = (PayableTax, Numberofdays) => {
     const dayIntrest = PayableTax * (12 / 100) * 1;
-    const Final = dayIntrest * (Numberofdays / 30);
+    const Final = (dayIntrest / 30) * Numberofdays;
     return Final;
   };
+
   const MonthTax = MonthTaxCalc(payableTax, Numberofdays).toFixed();
   const YearTax = YearTaxCalc(payableTax, Numberofdays).toFixed();
+  const TotalTax = Math.floor(MonthTax) + Math.floor(YearTax) + payableTax;
 
   const TaxHandler = (payableTax) => {
     if (payableTax === 0) {
@@ -27,12 +31,22 @@ const FinalTax = (props) => {
     } else {
       setYeartax(YearTax);
       setMonthTax(MonthTax);
+      setTotalTax(TotalTax);
     }
   };
   const clearTaxHandler = () => {
     setYeartax(0);
     setMonthTax(0);
+    setTotalTax(0);
   };
+
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
+  const displayIntrest = numberWithCommas(yeartax);
+  const Penalty = numberWithCommas(monthTax);
+  const displayTax = numberWithCommas(totalTax);
 
   return (
     <div>
@@ -45,9 +59,9 @@ const FinalTax = (props) => {
             TaxHandler(payableTax);
           }}
         >
-          Calculate total tax
+          Calculate Total Tax
         </Button>
-        <div>
+        <div style={{ marginLeft: 10 }}>
           <Button
             type="clear"
             className={classes.btn}
@@ -60,10 +74,14 @@ const FinalTax = (props) => {
       <div className={classes.final}>
         <div className={classes.box}>
           <div>
-            <h3>yearly tax:{yeartax}</h3>
-            <h3>Month tax:{monthTax}</h3>
+            <h3>interest: {displayIntrest} ₹</h3>
+            <h3>Penalty: {Penalty} ₹</h3>
+            <h3>Total : {displayTax} ₹</h3>
           </div>
         </div>
+      </div>
+      <div className="footer-copyright text-center py-3">
+        © 2020 Copyright: Kalph upadhyay
       </div>
     </div>
   );

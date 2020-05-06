@@ -91,7 +91,7 @@ const Land = (props) => {
                 type="submit"
                 onClick={CalculateHandler}
               >
-                Calculate
+                Calculate Pay Tax
               </Button>
 
               <Button variant="primary" type="submit" onClick={clearHandler}>

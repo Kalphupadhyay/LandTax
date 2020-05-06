@@ -33,7 +33,8 @@ const DateSelect = (props) => {
     } else if (payDate > allotmentDate) {
       var Difference_In_Time = payDate.getTime() - allotmentDate.getTime();
       const Days = Difference_In_Time / (1000 * 3600 * 24) - 1;
-      return Days;
+      if (Days < 60) return 0;
+      if (Days > 60) return Days - 60;
     }
   };
   const NumberOfDays = NumberOfDaysCalc(payDate, allotmentDate);
