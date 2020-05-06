@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import classes from "./styles.module.css";
 import { Form, Button } from "react-bootstrap";
+import Date from "./Date";
+
+export const LandContext = createContext();
 
 const Land = (props) => {
   const minecat = props.minecat;
@@ -44,6 +47,7 @@ const Land = (props) => {
   };
 
   const payableTax = numberWithCommas(Payable(Category, taxableLand, minecat));
+  const finalTax = Payable(Category, taxableLand, minecat);
 
   const CalculateHandler = (event) => {
     if (area === "") {
@@ -64,57 +68,55 @@ const Land = (props) => {
     event.preventDefault();
   };
   return (
-    <div>
-      <div className={classes.cat}>
-        <Form style={{ width: "40%" }}>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Area of your Land</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="Area"
-              value={area}
-              onChange={inputHandler}
-            />
-            <Form.Text className=" font-italic ">
-              Value entered is in square feet
-            </Form.Text>
-          </Form.Group>
-          <div className={classes.buttonContainer}>
-            <Button
-              variant="success"
-              className={classes.btn}
-              type="submit"
-              onClick={CalculateHandler}
-            >
-              Calculate
-            </Button>
+    <LandContext.Provider value={{ payableTax: finalTax }}>
+      <div>
+        <div className={classes.cat}>
+          <Form style={{ width: "40%" }}>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Area of your Land</Form.Label>
+              <Form.Control
+                type="number"
+                placeholder="sq.ft"
+                value={area}
+                onChange={inputHandler}
+              />
+              <Form.Text className=" font-italic ">
+                Value entered is in square feet
+              </Form.Text>
+            </Form.Group>
+            <div className={classes.buttonContainer}>
+              <Button
+                variant="success"
+                className={classes.btn}
+                type="submit"
+                onClick={CalculateHandler}
+              >
+                Calculate
+              </Button>
 
-            <Button variant="primary" type="submit" onClick={clearHandler}>
-              Clear
-            </Button>
-          </div>
-        </Form>
+              <Button variant="primary" type="submit" onClick={clearHandler}>
+                Clear
+              </Button>
+            </div>
+          </Form>
+        </div>
+
+        <div className={classes.Tax}>
+          <h3>Taxable Land:</h3>
+          <h3 style={{ marginLeft: 5 }}>
+            <span className={classes.result}>{taxable}</span> sq.ft
+          </h3>
+        </div>
+        <div className={classes.Tax}>
+          <h3>Payable Tax:</h3>
+          <h3 style={{ marginLeft: 5 }}>
+            <span className={classes.result}>{Pay}</span> ₹
+          </h3>
+        </div>
+
+        <Date />
       </div>
-      <div className={classes.Tax}>
-        <h3>Taxable Land:</h3>
-        <h3 style={{ marginLeft: 5 }}>{taxable} sq.ft</h3>
-      </div>
-      <div className={classes.Tax}>
-        <h3>Payable Tax:</h3>
-        <h3 style={{ marginLeft: 5 }}>{Pay} ₹</h3>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: 20,
-          fontSize: 25,
-        }}
-      >
-        Note : Intrest and Penalty on Payable Tax may be applicable as per land
-        tax rules
-      </div>
-    </div>
+    </LandContext.Provider>
   );
 };
 

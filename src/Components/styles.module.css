@@ -18,6 +18,58 @@
   justify-content: center;
   margin-top: 20px;
 }
+.result {
+  color: #64ccda;
+}
+.mobile {
+  width: 40%;
+}
+.DateContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.allotContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.allot {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.payContainer {
+  margin-top: 30px;
+}
+.pay {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.final {
+  display: flex;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+.box {
+  width: 50%;
+  height: 20%;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-color: black;
+  display: flex;
+  align-items: center;
+  border: 1px solid brown;
+  justify-content: center;
+  margin-bottom: 200px;
+}
+.yearTax {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 @media (max-width: 490px) {
   .buttonContainer {
@@ -25,5 +77,8 @@
   }
   .btn {
     margin-bottom: 10px;
+  }
+  .mobile {
+    width: 60%;
   }
 }

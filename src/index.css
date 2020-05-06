@@ -12,6 +12,8 @@ body {
 }
 .title {
   text-align: center;
+  color: #ef962d;
+  font-weight: 400;
 }
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {

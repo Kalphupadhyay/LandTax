@@ -16,9 +16,9 @@ const Picker = () => {
   return (
     <div className={classes.cont}>
       <div className={classes.cat}>
-        <Form style={{ width: "40%" }}>
+        <Form className={classes.mobile}>
           <Form.Group controlId="exampleForm.ControlSelect1">
-            <Form.Label style={{ fontSize: 20 }}>
+            <Form.Label style={{ fontSize: 18, width: "100%" }}>
               Select category of Land
             </Form.Label>
             <Form.Control as="select" value={category} onChange={HandleCat}>
@@ -35,8 +35,8 @@ const Picker = () => {
         }
         className={classes.mine}
       >
-        <Form style={{ width: "40%" }}>
-          <Form.Group controlId="exampleForm.ControlSelect1">
+        <Form className={classes.mobile}>
+          <Form.Group controlId="exampleForm.ControlSelect2">
             <Form.Label>Select category of Land</Form.Label>
             <Form.Control as="select" value={mine} onChange={Handlemine}>
               <option value="">Select class</option>
