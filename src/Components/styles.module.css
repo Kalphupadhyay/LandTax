@@ -42,6 +42,9 @@
 }
 .payContainer {
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .pay {
   display: flex;
@@ -54,16 +57,11 @@
   margin-top: 20px;
 }
 .box {
-  width: 50%;
-  height: 20%;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border-color: black;
   display: flex;
   align-items: center;
-  border: 1px solid brown;
+
   justify-content: center;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 }
 .yearTax {
   display: flex;

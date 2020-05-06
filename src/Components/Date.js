@@ -44,16 +44,16 @@ const DateSelect = (props) => {
         <div className={classes.allotContainer}>
           <h3>Enter Allotment Date</h3>
           <div className={classes.allot}>
-            <div style={{ marginLeft: 10 }}>mm-dd-yyyy</div>
             <DatePicker selected={date} onChange={dateChangeHandler} />
           </div>
+          <div style={{ marginTop: 10 }}>{date.toDateString()}</div>
         </div>
         <div className={classes.payContainer}>
           <h3>Enter Payment Date </h3>
           <div className={classes.pay}>
-            <div style={{ marginLeft: 10 }}>mm-dd-yyyy</div>
             <DatePicker selected={payDate} onChange={payChangeHandler} />
           </div>
+          <div style={{ marginTop: 10 }}>{payDate.toDateString()}</div>
         </div>
       </div>
       <FinalTax days={NumberOfDays} />
